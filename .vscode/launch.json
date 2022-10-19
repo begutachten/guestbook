@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<guestbook>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "guestbook.Application",
+            "projectName": "guestbook",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

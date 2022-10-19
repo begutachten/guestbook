@@ -29,9 +29,12 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * The core class to bootstrap our application. It triggers Spring Boot's auto-configuration, component scanning and
- * configuration properties scanning using the {@link SpringBootApplication} convenience annotation. At the same time,
- * this class acts as configuration class to configure additional components (see {@link #init(GuestbookRepository)})
+ * The core class to bootstrap our application. It triggers Spring Boot's
+ * auto-configuration, component scanning and
+ * configuration properties scanning using the {@link SpringBootApplication}
+ * convenience annotation. At the same time,
+ * this class acts as configuration class to configure additional components
+ * (see {@link #init(GuestbookRepository)})
  * that the Spring container will take into account when bootstrapping.
  *
  * @author Paul Henke
@@ -50,8 +53,10 @@ public class Application {
 	}
 
 	/**
-	 * Some initializing code to populate our database with some {@link GuestbookEntry}s. Beans of type
-	 * {@link CommandLineRunner} will be executed on application startup which makes them a convenient way to run
+	 * Some initializing code to populate our database with some
+	 * {@link GuestbookEntry}s. Beans of type
+	 * {@link CommandLineRunner} will be executed on application startup which makes
+	 * them a convenient way to run
 	 * initialization code.
 	 */
 	@Bean
@@ -60,18 +65,20 @@ public class Application {
 		return args -> {
 
 			Stream.of( //
-					new GuestbookEntry("H4xx0r", "first!!!"), //
-					new GuestbookEntry("Arni", "Hasta la vista, baby"), //
+					new GuestbookEntry("H4xx0r", "first!!!", "wrgetg@mail.de"), //
+					new GuestbookEntry("Arni", "Hasta la vista, baby", "wrgetg@mail.de"), //
 					new GuestbookEntry("Duke Nukem",
-							"It's time to kick ass and chew bubble gum. And I'm all out of gum."), //
+							"It's time to kick ass and chew bubble gum. And I'm all out of gum.", "wrgetg@mail.de"), //
 					new GuestbookEntry("Gump1337",
-							"Mama always said life was like a box of chocolates. You never know what you're gonna get.")) //
+							"Mama always said life was like a box of chocolates. You never know what you're gonna get.",
+							"wrgetg@mail.de")) //
 					.forEach(guestbook::save);
 		};
 	}
 
 	/**
-	 * This class customizes the web and web security configuration through callback methods provided by the
+	 * This class customizes the web and web security configuration through callback
+	 * methods provided by the
 	 * {@link WebMvcConfigurer} interface.
 	 */
 	@Configuration
@@ -80,12 +87,16 @@ public class Application {
 
 		/*
 		 * (non-Javadoc)
-		 * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#addViewControllers(org.springframework.web.servlet.config.annotation.ViewControllerRegistry)
+		 * 
+		 * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#
+		 * addViewControllers(org.springframework.web.servlet.config.annotation.
+		 * ViewControllerRegistry)
 		 */
 		@Override
 		public void addViewControllers(ViewControllerRegistry registry) {
 
-			// Route requests to /login to the login view (a default one provided by Spring Security)
+			// Route requests to /login to the login view (a default one provided by Spring
+			// Security)
 			registry.addViewController("/login").setViewName("login");
 		}
 
